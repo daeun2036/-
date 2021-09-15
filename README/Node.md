@@ -2,15 +2,18 @@
 - [알아두어야 할 자바스크립트](./JavaScript.md)
 - 노드 기능
     - 실행  
-    - [노드 내장 객체](./Node-Objects)  
-    - [노드 내장 모듈](./Node-Module)  
-    - [파일 시스템](./FileSystem)
+    - [노드 내장 객체](./Objects.md)  
+    - [노드 내장 모듈](./Module.md)  
+    - [파일 시스템](./FileSystem.md)
+    
 ## 실행
 
 ### 1. REPL 사용하기
 ***
 - 읽고(Read), 해석하고(Eval), 반환하고(Print), 종료할 때까지 반복(Loop)한다.
 - 윈도에서는 cmd, 맥이나 리눅스에서는 terminal, VS Code에서는 Ctrl+`
+<img src="https://thebook.io/img/080229/090.jpg" height = 250 width=300
+
 ~~~console
 $ node
 >
