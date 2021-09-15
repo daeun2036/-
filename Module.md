@@ -136,11 +136,13 @@ POSIX : /home/zerocho
 ### 7. worker_threads
 ***
 - 멀티 스레드
+- `worker_thread.js` 참조
 
 ### 8. child-process
 ***
 - 다른 프로그램을 실행하고 싶거나 명령어를 수행하고 싶을 때 사용
-
+- exec는 shell에서 명령어 수행, spawn은 새로운 프로세스를 띄우면서 명령어 수행
+- `exec.js` 또는 `spawn.js` 참조
 ### 9. 기타 모듈들
 ***
 - assert : 값을 비교하여 프로그램이 제대로 작동하는지 테스트하는데 사용

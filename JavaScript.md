@@ -123,7 +123,7 @@ const relationship2 = {
 relationship2.logFriends();
 ~~~
 
-화살표 함수를 사용하여 바깥 스코프인 logFriends()의 `this를 그대로 사용이 가능`한 상황이 되었다.
+화살표 함수를 사용하여 바깥 스코프인 logFriends()의 `this를 그대로 사용이 가능`한 상황이 되었다.  
 
 ### 5. 구조분해 할당
 ***
