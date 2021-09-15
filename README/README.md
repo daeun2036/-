@@ -14,6 +14,7 @@
 3. V8 엔진 출시 후 속도 해결(오픈 소스로 코드 공개)
 4. V8 엔진 기반으로 Node Project 시작
 
+<img src="https://thebook.io/img/080229/027_1.jpg" height = 200px width=250px>
 
 ## 특성
 
