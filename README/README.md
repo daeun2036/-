@@ -1,6 +1,8 @@
-# Node
+- Node
+- [알아두어야 할 자바스크립트](./JavaScript.md)
+- [노드 기능](./Node.md)
 
-## Node 정의
+## Node
 
 > Node.jsⓇ는 Chrome V8 Javascript 엔진으로 빌드된 Javascript 런타임입니다. 
 
@@ -11,8 +13,6 @@
 2. 브라우저 외의 환경에서는 js 실행 속도 문제 때문에 좋은 결과 x
 3. V8 엔진 출시 후 속도 해결(오픈 소스로 코드 공개)
 4. V8 엔진 기반으로 Node Project 시작
-
-<img src ="./Image/node constructure.png" height=300 width=300>
 
 
 ## 특성
@@ -38,8 +38,6 @@
 
 - 이벤트 루프(event loop)는 여러 이벤트가 동시에 발생했을 때 `어떤 순서로 콜백 함수를 호출할지를 이벤트 루프가 판단`합니다.   
 - 노드는 이벤트가 종료될 때까지 이벤트 처리를 위한 작업을 반복 하므로 루프(loop)라고 부릅니다.
-
-<img src="./Image/이벤트 루프.png" >
 
 ***
 

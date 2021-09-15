@@ -16,13 +16,15 @@
 - let은 값을 계속 수정할 수 있지만, const는 불가능하고 초기화 시 값이 필요하다.  
 
 ~~~js
-const a = 0;
-a = 1; // error
+if (true) {
+  var x = 3;
+}
+console.log(x); // 3
 
-let b = 0;
-b = 1; // 1
-
-const c; // error
+if (true) {
+  const y = 3;
+}
+console.log(y); // Uncaught ReferenceError: y is not defined
 ~~~
 
 ### 2. 템플릿 문자열
@@ -118,7 +120,7 @@ relationship2.logFriends();
 
 ### 5. 구조분해 할당
 - 객체나 배열에서 속성 혹은 요소를 꺼내올 때 사용한다.
-- 기존 코드
+- 객체
 ~~~js
 var candyMachine = {
     status: {
@@ -150,9 +152,9 @@ const { getCandy1, status: { count } } = candyMachine1;
 console.log(getCandy1()) // Hi
 console.log(count) // 5
 ~~~
+한 줄로 나타내는 것이 가능해졌을 뿐더러, 여러 단계 안의 속성(conut)도 가져오는 것처럼 작성이 가능해졌다.  
 
-- 한 줄로 나타내는 것이 가능해졌을 뿐더러, 여러 단계 안의 속성(conut)도 가져오는 것처럼 작성이 가능해졌다.
-- 배열에서도 마찬가지로 적용이 가능하다.
+- 배열
 ~~~js
 var array = ['nodejs', {}, 10, true];
 var node = array[0];
@@ -165,12 +167,12 @@ const [node, obj, , bool] = array1;
 
 ### 6. 프로미스(promise)
 - 콜백 함수 자체가 복잡하기 때문에 ES2015부터는 콜백 대신 API들이 프로미스 기반으로 재구성되고 있다.
-
+- promise 객체 구조
 ~~~js
-const condition = true;
+const condition = true; // ture면 resolve, false면 reject
  
 // resolve와 reject를 매개 변수로 갖는 콜백 함수를 넣는 방식
-const promise = new Promise((resolve, reject) => {
+const promise = new Promise((resolve, reject) => { // promise 객체 생성
     if (condition){
         resolve('성공');
     } else {
@@ -178,10 +180,11 @@ const promise = new Promise((resolve, reject) => {
     }
 });
 
-// resolve가 호출되면 then이 실행되고, reject가 호출되면 catch가 실행된다.
-promise
+// promise 변수에 then과 catch 메서드를 붙임
+// resolve가 호출되면 then이 실행되고, reject가 호출되면 catch가 실행
+promise 
     .then((message) => {
-        console.log(message); // message에 '성공'이 들어가 log로 출력된다.
+        console.log(message); // message에 '성공'이 들어가 log로 출력
     })
     .catch((error) => {
         console.log(error); // error에 '실패'가 들어가 log로 출력된다.
@@ -194,5 +197,80 @@ promise
 
 ## FrontEnd JS
 
-git config --global user.email moderato2036@naver.com
-git config --global user.name daeun2036
+### 1. AJAX
+- 페이지 이동 없이 서버에 요청을 보내고 응답을 받는 기술
+- jQuery나 axios같은 라이브러리를 이용해서 보냄
+
+### 2. FormData
+- HTML form태그의 데이터를 동적으로 제어
+~~~js
+<script>
+    const formData = new FormData(); // formData 객체 생성
+    formData.append('name', 'zerocho'); // 키-값 데이터 추가
+    formData.append('item', 'orange');
+    formData.append('item', 'melon');
+    formData.has('item'); // true
+    formData.has('money'); // false;
+    formData.get('item'); // orange
+    formData.getAll('item'); // ['orange', 'melon'];
+    formData.append('test', ['hi', 'zero']);
+    formData.get('test'); // hi, zero
+    formData.delete('test');
+    formData.get('test'); // null
+    formData.set('item', 'apple'); // 키 수정
+    formData.getAll('item'); // ['apple'];
+</script>
+~~~
+- axois로 form data를 서버로 보냄
+~~~js
+(async () => {
+  try {
+    const formData = new FormData();
+    formData.append('name', 'zerocho');
+    formData.append('birth', 1994);
+    const result = await axios.post('https://www.zerocho.com/api/post/formdata', formData); // 두 번째 인수에 data를 넣어서 보냄
+    console.log(result);
+    console.log(result.data);
+  } catch (error) {
+    console.error(error);
+  }
+})();
+~~~
+### 3. encodeURIComponent, decodeURIComponenet
+- AJAX 요청 시, 주소에 한글이 들어가는 경우 한글 주소 부분을 encode함
+- AJAX 요청을 보낼 때
+~~~js
+(async () => {
+  try {
+    const result = await axios.get(`https://www.zerocho.com/api/search/${encodeURIComponent('노드')}`);
+    console.log(result);
+    console.log(result.data); // {}
+  } catch (error) {
+    console.error(error);
+  }
+})();
+~~~
+- 서버 측에서 복구 할때
+~~~js
+decodeURIComponent('%EB%85%B8%EB%93%9C'); // 노드
+~~~
+
+### 4. data attribute & dataset
+- 프런트엔드에 data를 저장하는 방법
+~~~html
+<ul>
+  <li data-id="1" data-user-job="programmer">Zero</li>
+  <li data-id="2" data-user-job="designer">Nero</li>
+  <li data-id="3" data-user-job="programmer">Hero</li>
+  <li data-id="4" data-user-job="ceo">Kero</li>
+</ul>
+<script> 
+  console.log(document.querySelector('li').dataset);
+  // { id: '1', userJob: 'programmer' }
+  dataset.monthSalary = 1000;
+  // data-month-salary="1000"
+</script>
+~~~
+HTML 태그의 속성으로 `data-`로 시작하는 것(data attribute)을 추가한다.
+data attribute를 사용하여 js로 쉽게 접근할 수 있게 한다.
+
