@@ -6,7 +6,11 @@
     - [노드 내장 모듈](./Module.md)  
     - [파일 시스템](./FileSystem.md)
 - npm   
-- [Express](./Express.md)   
+- Express 
+    - [서버](./Express.md)  
+    - [미들웨어](./Middleware.md)
+    - [라우터](./Router.md)
+    - [req,res 객체](./req-res.md) 
 
 # npm
 
@@ -88,7 +92,9 @@ $ npm install [패키지1] [패키지2] [...]
 ### 3. nodemon 패키지
 
 ***
-소스 코드가 바뀔 때마다 자동으로 노드를 재실행
+- 소스 코드가 바뀔 때마다 자동으로 노드를 재실행
+- nodemon은 `개발용`으로만 사용하는 것을 권장
+- 배포 후에는 서버 코드가 빈번하게 변경될 일이 없으므로 nodemon을 사용하지 않아도 됨
 
 ### 4. 넘버링
 
