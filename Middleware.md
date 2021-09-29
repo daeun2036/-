@@ -49,11 +49,11 @@ app.use((err, req, res, next) => { // 4개의 매개변수
 ***
 ~~~js
 app.use((req, res, next) => {
-req.data = '데이터 넣기'; // req 객체 사용
-next();
-}, (req, res, next) => {
-console.log(req.data); // 데이터 받기
-next();
+    req.data = '데이터 넣기'; // req 객체 사용
+    next();
+    }, (req, res, next) => {
+    console.log(req.data); // 데이터 받기
+    next();
 });
 ~~~
 - req: 요청이 끝날 때까지만 데이터 유지   
